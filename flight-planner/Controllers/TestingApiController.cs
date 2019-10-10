@@ -5,6 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using flight_planner.Models;
+using System.Threading.Tasks;
+
+using System.Web.Routing;
+using flight_planner.Atributes;
+using flight_planner.core.Models;
+using flight_planner.Models;
+using flight_planner.services;
 
 namespace flight_planner.Controllers
 {
@@ -12,9 +19,12 @@ namespace flight_planner.Controllers
     {
         [HttpPost]
         [Route("testing-api/clear")]
-        public bool Clear()
+        public async Task<bool> Clear()
         {
-            FlightStorage.ClearList();
+            var a =new FlightService();
+            await a.ClearDb();
+
+
             return true;
         }
 

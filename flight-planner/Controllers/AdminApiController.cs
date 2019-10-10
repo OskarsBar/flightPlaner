@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Routing;
 using flight_planner.Atributes;
+using flight_planner.core.Models;
 using flight_planner.Models;
+using flight_planner.services;
 
 namespace flight_planner.Controllers
 {
     [BasicAuthentication]
     public class AdminApiController : ApiController
     {
+        private static readonly object obj = new object();
+        private readonly FlightService _flightService;
 
-        private static readonly Object obj = new Object();
+        //private static readonly Object obj = new Object();
 
         public AdminApiController()
         {
-
+            _flightService= new FlightService();
         }
 
         // GET: api/AdminApi
@@ -33,7 +37,7 @@ namespace flight_planner.Controllers
         [Route("admin-api/flights/{id}")]
         public async Task<HttpResponseMessage> Get(HttpRequestMessage request, int id)
         {
-            var flight = FlightStorage.GetFlightById(id);
+            var flight = await _flightService.GetFlightByIdentificator(id);
             if (flight == null)
             {
                 return request.CreateResponse(HttpStatusCode.NotFound);
@@ -73,7 +77,7 @@ namespace flight_planner.Controllers
                    !string.IsNullOrEmpty(airport.Country);
         }
 
-        private bool IsValid(Flight flight)
+        private bool IsValid(FlightRequest flight)
         {
             
                 return !string.IsNullOrEmpty(flight.ArrivalTime) &&
@@ -89,36 +93,71 @@ namespace flight_planner.Controllers
             
         }
 
+        public Flight FillInFlight(FlightRequest flight)
+        {
+            var domainFlight = new Flight
+            {
+                From = new Airport
+                {
+                    AirportCode = flight.From.Airport,
+                    City = flight.From.City,
+                    Country = flight.From.Country
+                },
+                To = new Airport
+                {
+                    AirportCode = flight.To.Airport,
+                    City = flight.To.City,
+                    Country = flight.To.Country
+                },
+                ArrivalTime = flight.ArrivalTime,
+                Id = flight.Id,
+                DepartureTime = flight.DepartureTime,
+                Carrier = flight.Carrier
+            };
+            return domainFlight;
+        }
+       
         // PUT: api/AdminApi/5
         [HttpPut]
         [Route("admin-api/flights")]
-        public async Task<HttpResponseMessage> AddFlight(HttpRequestMessage request, Flight flight)
+        
+        public async Task<HttpResponseMessage> AddFlight(HttpRequestMessage request, FlightRequest flight)
         {
-
             if (!IsValid(flight))
             {
                 return request.CreateResponse(HttpStatusCode.BadRequest);
             }
-
-            
-                flight.Id = FlightStorage.GetId();
-                
-                    if (!FlightStorage.AddFlight(flight))
+            var domainFlight = FillInFlight(flight);
+            var rand = new Random();
+            lock (obj)
+            {
+                {
+                    if (_flightService.Exists(domainFlight))
                     {
                         return request.CreateResponse(HttpStatusCode.Conflict, flight);
                     }
+                    domainFlight =  _flightService.AddFlight(domainFlight);
+                    flight.Id = domainFlight.Id;
 
                     return request.CreateResponse(HttpStatusCode.Created, flight);
-                
-        }
 
+                }
+            }
+        }
+        [HttpGet]
+        [Route("admin-api/get/flights")]
+        public async Task<ICollection<Flight>> GetFlights(HttpRequestMessage request)
+        {
+
+            return await _flightService.GetFlights();
+        }
         // DELETE: api/AdminApi/5
         [HttpDelete]
         [Route("admin-api/flights/{id}")]
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, int id)
         {
             
-                FlightStorage.RemoveFlightById(id);
+               await _flightService.DeleteFlightByIdentificator(id);
 
                 return request.CreateResponse(HttpStatusCode.OK);
 

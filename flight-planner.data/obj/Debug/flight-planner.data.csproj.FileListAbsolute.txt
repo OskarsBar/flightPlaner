@@ -1,0 +1,16 @@
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\flight-planner.data.dll.config
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\flight-planner.data.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\flight-planner.data.pdb
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\EntityFramework.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\flight-planner.core.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\flight-planner.core.pdb
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\EntityFramework.xml
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight-planner.data.csprojAssemblyReference.cache
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight_planner.data.Migrations.init.resources
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight-planner.data.csproj.GenerateResource.cache
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight-planner.data.csproj.CoreCompileInputs.cache
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight-planner.data.csproj.CopyComplete
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight-planner.data.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.data\obj\Debug\flight-planner.data.pdb

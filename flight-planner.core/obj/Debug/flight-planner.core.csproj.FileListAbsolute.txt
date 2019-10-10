@@ -1,0 +1,6 @@
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.core\bin\Debug\flight-planner.core.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.core\bin\Debug\flight-planner.core.pdb
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.core\obj\Debug\flight-planner.core.csprojAssemblyReference.cache
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.core\obj\Debug\flight-planner.core.csproj.CoreCompileInputs.cache
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.core\obj\Debug\flight-planner.core.dll
+C:\Users\codelex\Desktop\newflight\flightPlaner\flight-planner.core\obj\Debug\flight-planner.core.pdb
